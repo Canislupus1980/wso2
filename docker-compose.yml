@@ -1,0 +1,103 @@
+   Docker Compose for Run WSO2
+#   Test for WSO2-AM 4.1.0
+#   Need  "wso2-net" Network for Run this File
+#   docker network create --driver bridge --subnet=172.16.50.0/24 wso2-net
+
+version: '3.4'
+services:
+  mysql:
+    image: mysql:5.7.40
+    container_name: wso2_mysql
+    ports:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ueeHWugC!
+    volumes:
+      - ./mysql/scripts:/docker-entrypoint-initdb.d
+    command: [--ssl=0]
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-uroot", "-proot"]
+      interval: 120s
+      timeout: 300s
+      retries: 30
+      start_period: 300s
+    networks:
+      wso2-net:
+       aliases:
+        - wso2-net
+
+  am-analytics:
+    container_name: wso2_analytics
+    image: wso2/wso2am-analytics-worker
+    ports:
+      - "9091:9091"
+      - "9444:9444"
+    healthcheck:
+      test: ["CMD", "nc", "-z","localhost", "9091"]
+      interval: 120s
+      timeout: 300s
+      start_period: 300s
+      retries: 30
+    networks:
+      wso2-net:
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./apim-analytics:/home/wso2carbon/wso2-config-volume
+
+  is-as-km:
+    container_name: wso2_is
+    image: wso2/wso2is
+    healthcheck:
+      test: ["CMD", "curl", "-k", "-f", "https://localhost:9443/carbon/admin/login.jsp"]
+      interval: 120s
+      timeout: 300s
+      start_period: 300s
+      retries: 30
+    networks:
+      wso2-net:
+    depends_on:
+      mysql:
+        condition: service_healthy
+      am-analytics:
+        condition: service_healthy
+    volumes:
+      - ./is-as:/home/wso2carbon/wso2-config-volume
+      - ./is-conf/deployment.toml:/home/wso2carbon/wso2is-5.11.0/repository/conf/deployment.toml
+    ports:
+      - "9765:9763"
+      - "9445:9443"
+
+  api-manager:
+    image: wso2/wso2am
+    container_name: wso2_am
+    healthcheck:
+      test: ["CMD", "curl", "-k", "-f", "https://localhost:9443/carbon/admin/login.jsp"]
+      interval: 120s
+      timeout: 300s
+      start_period: 300s
+      retries: 30
+    networks:
+      wso2-net:
+    depends_on:
+      mysql:
+        condition: service_healthy
+      am-analytics:
+        condition: service_healthy
+      is-as-km:
+        condition: service_healthy
+    volumes:
+      - ./apim:/home/wso2carbon/wso2-config-volume
+      - ./apim-conf/deployment.toml:/home/wso2carbon/wso2am-4.1.0/repository/conf/deployment.toml
+      #- ./certs:/home/wso2carbon/wso2am-4.1.0/repository/resources/security
+      #- /home/cloud-user/authenticationendpoint.war:/home/wso2carbon/wso2am-4.1.0/repository/deployment/server/webapps/authenticationendpoint.war
+    ports:
+      - "9763:9763"
+      - "9443:9443"
+      - "8280:8280"
+      - "8243:8243"
+
+networks:
+  wso2-net:
+    external: true
