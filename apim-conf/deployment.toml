@@ -25,7 +25,7 @@ url = "jdbc:h2:./repository/database/WSO2SHARED_DB;DB_CLOSE_ON_EXIT=FALSE"
 username = "wso2carbon"
 password = "wso2carbon"
 
-[keystore.primary]
+[keystore.tls]
 file_name =  "wso2carbon.jks"
 type =  "JKS"
 password =  "wso2carbon"
@@ -35,12 +35,19 @@ key_password =  "wso2carbon"
 #[keystore.listener_profile]
 #bind_address = "0.0.0.0"
 
-[keystore.internal]
-file_name =  "wso2carbon.jks"
-type =  "JKS"
-password =  "wso2carbon"
-alias =  "wso2carbon"
-key_password =  "wso2carbon"
+#[keystore.primary]
+#file_name =  "wso2carbon.jks"
+#type =  "JKS"
+#password =  "wso2carbon"
+#alias =  "wso2carbon"
+#key_password =  "wso2carbon"
+
+#[keystore.internal]
+#file_name =  "wso2carbon.jks"
+#type =  "JKS"
+#password =  "wso2carbon"
+#alias =  "wso2carbon"
+#key_password =  "wso2carbon"
 
 [[apim.gateway.environment]]
 name = "Default"
@@ -91,8 +98,7 @@ gateway_labels =["Default"]
 #expiry_time = "2m"
 
 [apim.analytics]
-enable = true
-config_endpoint = "https://analytics-event-auth.choreo.dev/auth/v1"
+enable = false
 auth_token = ""
 
 #[apim.key_manager]
@@ -129,20 +135,20 @@ auth_token = ""
 #enable_token_encryption = false
 #enable_token_hashing = false
 
-[apim.devportal]
-url = "https://localhost:${mgt.transport.https.port}/devportal"
-enable_application_sharing = false
+#[apim.devportal]
+#url = "https://localhost:${mgt.transport.https.port}/devportal"
+#enable_application_sharing = false
 #if application_sharing_type, application_sharing_impl both defined priority goes to application_sharing_impl
-application_sharing_type = "default" #changed type, saml, default #todo: check the new config for rest api
-application_sharing_impl = "org.wso2.carbon.apimgt.impl.SAMLGroupIDExtractorImpl"
-display_multiple_versions = false
-display_deprecated_apis = false
-enable_comments = true
-enable_ratings = true
-enable_forum = true
-enable_anonymous_mode=true
-enable_cross_tenant_subscriptions = true
-default_reserved_username = "apim_reserved_user"
+#application_sharing_type = "default" #changed type, saml, default #todo: check the new config for rest api
+#application_sharing_impl = "org.wso2.carbon.apimgt.impl.SAMLGroupIDExtractorImpl"
+#display_multiple_versions = false
+#display_deprecated_apis = false
+#enable_comments = true
+#enable_ratings = true
+#enable_forum = true
+#enable_anonymous_mode=true
+#enable_cross_tenant_subscriptions = true
+#default_reserved_username = "apim_reserved_user"
 
 [apim.cors]
 allow_origins = "*"
@@ -193,9 +199,6 @@ allow_credentials = false
 #client_registration_username = "$ref{super_admin.username}"
 #client_registration_password = "$ref{super_admin.password}"
 
-[transport.http]
-listener.wsdl_epr_prefix="$ref{server.hostname}"
-
 #data bridge config
 #[transport.receiver]
 #type = "binary"
@@ -244,7 +247,6 @@ id = "token_revocation"
 type = "org.wso2.carbon.identity.core.handler.AbstractIdentityHandler"
 name = "org.wso2.is.notification.ApimOauthEventInterceptor"
 order = 1
-
 [event_listener.properties]
 notification_endpoint = "https://localhost:${mgt.transport.https.port}/internal/data/v1/notify"
 username = "${admin.username}"
