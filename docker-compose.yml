@@ -90,7 +90,6 @@ services:
     volumes:
       - ./apim:/home/wso2carbon/wso2-config-volume
       - ./apim-conf/deployment.toml:/home/wso2carbon/wso2am-4.1.0/repository/conf/deployment.toml
-      #- ./certs:/home/wso2carbon/wso2am-4.1.0/repository/resources/security
       #- /home/cloud-user/authenticationendpoint.war:/home/wso2carbon/wso2am-4.1.0/repository/deployment/server/webapps/authenticationendpoint.war
     ports:
       - "9763:9763"
