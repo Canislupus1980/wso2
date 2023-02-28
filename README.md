@@ -7,4 +7,4 @@ openssl pkcs12 -export -in domen.crt -inkey domen.key -name "*.domen.com" -certf
 
 keytool -importkeystore -srckeystore domen.pfx -srcstoretype pkcs12 -destkeystore domen.jks -deststoretype JKS
 
-in the deployment.toml file, change the name to the desired certificate store
+deployment.toml file - change the name to the desired certificate store
