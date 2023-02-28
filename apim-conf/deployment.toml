@@ -1,5 +1,7 @@
+# domen.com - replace with your domain name
+
 [server]
-hostname = "localhost"
+hostname = "domen.com"
 #offset=0
 base_path = "${carbon.protocol}://${carbon.host}:${carbon.management.port}"
 #discard_empty_caches = false
@@ -26,10 +28,10 @@ username = "wso2carbon"
 password = "wso2carbon"
 
 [keystore.tls]
-file_name =  "wso2carbon.jks"
+file_name =  "domen.jks"
 type =  "JKS"
 password =  "wso2carbon"
-alias =  "wso2carbon"
+alias =  "*.domen.com"
 key_password =  "wso2carbon"
 
 #[keystore.listener_profile]
@@ -59,12 +61,12 @@ show_as_token_endpoint_url = true
 service_url = "https://localhost:${mgt.transport.https.port}/services/"
 username= "${admin.username}"
 password= "${admin.password}"
-ws_endpoint = "ws://localhost:9099"
-wss_endpoint = "wss://localhost:8099"
-http_endpoint = "http://localhost:${http.nio.port}"
-https_endpoint = "https://localhost:${https.nio.port}"
-websub_event_receiver_http_endpoint = "http://localhost:9021"
-websub_event_receiver_https_endpoint = "https://localhost:8021"
+ws_endpoint = "ws://domen.com:9099"
+wss_endpoint = "wss://domen.com:8099"
+http_endpoint = "http://domen.com:${http.nio.port}"
+https_endpoint = "https://domen.com:${https.nio.port}"
+websub_event_receiver_http_endpoint = "http://domen.com:9021"
+websub_event_receiver_https_endpoint = "https://domen.com:8021"
 
 [apim.sync_runtime_artifacts.gateway]
 gateway_labels =["Default"]
@@ -102,7 +104,7 @@ enable = false
 auth_token = ""
 
 #[apim.key_manager]
-#service_url = "https://localhost:${mgt.transport.https.port}/services/"
+#service_url = "https://domen.com:${mgt.transport.https.port}/services/"
 #username = "$ref{super_admin.username}"
 #password = "$ref{super_admin.password}"
 #pool.init_idle_capacity = 50
@@ -112,10 +114,10 @@ auth_token = ""
 #key_validation_handler_impl = "org.wso2.carbon.apimgt.keymgt.handlers.DefaultKeyValidationHandler"
 
 #[apim.idp]
-#server_url = "https://localhost:${mgt.transport.https.port}"
-#authorize_endpoint = "https://localhost:${mgt.transport.https.port}/oauth2/authorize"
-#oidc_logout_endpoint = "https://localhost:${mgt.transport.https.port}/oidc/logout"
-#oidc_check_session_endpoint = "https://localhost:${mgt.transport.https.port}/oidc/checksession"
+#server_url = "https://domen.com:${mgt.transport.https.port}"
+#authorize_endpoint = "https://domen.com:${mgt.transport.https.port}/oauth2/authorize"
+#oidc_logout_endpoint = "https://domen.com:${mgt.transport.https.port}/oidc/logout"
+#oidc_check_session_endpoint = "https://domen.com:${mgt.transport.https.port}/oidc/checksession"
 
 #[apim.jwt]
 #enable = true
@@ -135,20 +137,20 @@ auth_token = ""
 #enable_token_encryption = false
 #enable_token_hashing = false
 
-#[apim.devportal]
-#url = "https://localhost:${mgt.transport.https.port}/devportal"
-#enable_application_sharing = false
+[apim.devportal]
+url = "https://domen.com:${mgt.transport.https.port}/devportal"
+enable_application_sharing = true
 #if application_sharing_type, application_sharing_impl both defined priority goes to application_sharing_impl
-#application_sharing_type = "default" #changed type, saml, default #todo: check the new config for rest api
-#application_sharing_impl = "org.wso2.carbon.apimgt.impl.SAMLGroupIDExtractorImpl"
-#display_multiple_versions = false
-#display_deprecated_apis = false
-#enable_comments = true
-#enable_ratings = true
-#enable_forum = true
-#enable_anonymous_mode=true
-#enable_cross_tenant_subscriptions = true
-#default_reserved_username = "apim_reserved_user"
+application_sharing_type = "default" #changed type, saml, default #todo: check the new config for rest api
+application_sharing_impl = "org.wso2.carbon.apimgt.impl.SAMLGroupIDExtractorImpl"
+display_multiple_versions = true
+display_deprecated_apis = true
+enable_comments = true
+enable_ratings = true
+enable_forum = true
+enable_anonymous_mode=true
+enable_cross_tenant_subscriptions = true
+default_reserved_username = "apim_reserved_user"
 
 [apim.cors]
 allow_origins = "*"
@@ -248,7 +250,7 @@ type = "org.wso2.carbon.identity.core.handler.AbstractIdentityHandler"
 name = "org.wso2.is.notification.ApimOauthEventInterceptor"
 order = 1
 [event_listener.properties]
-notification_endpoint = "https://localhost:${mgt.transport.https.port}/internal/data/v1/notify"
+notification_endpoint = "https://domen.com:${mgt.transport.https.port}/internal/data/v1/notify"
 username = "${admin.username}"
 password = "${admin.password}"
 'header.X-WSO2-KEY-MANAGER' = "default"
