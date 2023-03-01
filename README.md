@@ -20,3 +20,5 @@ type =  "JKS"
 password =  "wso2carbon"
 alias =  "*.domen.com"
 key_password =  "wso2carbon"
+
+![image](https://user-images.githubusercontent.com/86954730/222174542-3cf461ce-be36-4cc4-9cbd-278e1c6c605f.png)
