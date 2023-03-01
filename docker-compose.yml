@@ -64,8 +64,7 @@ services:
         condition: service_healthy
     volumes:
       - ./is-as:/home/wso2carbon/wso2-config-volume
-      - ./is-conf/deployment.toml:/home/wso2carbon/wso2is-5.11.0/repository/conf/deployment.toml
-      - ./db/is-as:/home/wso2carbon/wso2is-5.11.0/
+      - ./is-conf/deployment.toml:/home/wso2carbon/wso2is-5.11.0/repository/conf/deployment.toml     
     ports:
       - "9765:9763"
       - "9445:9443"
