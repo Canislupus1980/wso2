@@ -16,15 +16,10 @@ keytool -importkeystore -srckeystore domen.pfx -srcstoretype pkcs12 -destkeystor
 3. deployment.toml file - change the name to the desired certificate store
 
 [keystore.tls]
-
 file_name =  "domen.jks"
-
 type =  "JKS"
-
 password =  "wso2carbon"
-
 alias =  "*.domen.com"
-
 key_password =  "wso2carbon"
 
 
