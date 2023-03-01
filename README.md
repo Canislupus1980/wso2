@@ -17,9 +17,13 @@ keytool -importkeystore -srckeystore domen.pfx -srcstoretype pkcs12 -destkeystor
 
 [keystore.tls]
 file_name =  "domen.jks"
+
 type =  "JKS"
+
 password =  "wso2carbon"
+
 alias =  "*.domen.com"
+
 key_password =  "wso2carbon"
 
 
