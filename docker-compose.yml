@@ -11,7 +11,7 @@ services:
     ports:
       - 3306
     environment:
-      MYSQL_ROOT_PASSWORD: ueeHWugC!
+      MYSQL_ROOT_PASSWORD: admin
     volumes:
       - ./mysql/scripts:/docker-entrypoint-initdb.d
     command: [--ssl=0]
@@ -65,6 +65,7 @@ services:
     volumes:
       - ./is-as:/home/wso2carbon/wso2-config-volume
       - ./is-conf/deployment.toml:/home/wso2carbon/wso2is-5.11.0/repository/conf/deployment.toml
+      - ./db/is-as:/home/wso2carbon/wso2is-5.11.0/
     ports:
       - "9765:9763"
       - "9445:9443"
