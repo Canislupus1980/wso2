@@ -15,7 +15,9 @@ openssl pkcs12 -export -in domen.crt -inkey domen.key -name "*.domen.com" -certf
 keytool -importkeystore -srckeystore domen.pfx -srcstoretype pkcs12 -destkeystore domen.jks -deststoretype JKS
 ```
 2. Ready certificates domain.jks put /home/wso2carbon/wso2am-4.1.0/repository/resources/security/
-
+```bash
+cp wso2-config-volume/domen.jks wso2am-4.1.0/repository/resources/security/
+```
 3. deployment.toml file - change the name to the desired certificate store
 ```toml
 [keystore.tls]
@@ -32,9 +34,7 @@ docker restart wso2_am
 Configure ---> Datasources ---> Add Datasource
 
 **The class name of the JDBC driver to use. Make sure to copy the JDBC driver relevant to the database engine to the <PRODUCT_HOME>/repository/components/lib/ directory. For example, if you are using MySQL, specify com.mysql.jdbc.Driver as the driver and copy mysql-connector-java-5.XX-bin.jar file to this directory. If you do not copy the driver to this directory when you create the datasource, you will get an exception similar to Cannot load JDBC driver class com.mysql.jdbc.Driver.**
-```bash
-cp wso2-config-volume/domen.jks wso2am-4.1.0/repository/resources/security/
-```
+
 ```bash
 cp wso2-config-volume/mysql-connector-j-8.0.32.jar wso2am-4.1.0/repository/components/lib/
 ```
