@@ -25,7 +25,9 @@ password =  "wso2carbon"
 alias =  "*.domen.com"
 key_password =  "wso2carbon"
 ```
-
+```bash
+docker restart wso2_am
+```
 #### MySQL database connection
 Configure ---> Datasources ---> Add Datasource
 
