@@ -39,3 +39,9 @@ Configure ---> Datasources ---> Add Datasource
 cp wso2-config-volume/mysql-connector-j-8.0.32.jar wso2am-4.1.0/repository/components/lib/
 ```
 ![image](https://user-images.githubusercontent.com/86954730/222174542-3cf461ce-be36-4cc4-9cbd-278e1c6c605f.png)
+
+Useful links:
+
+https://medium.com/@himashaguruge/using-keycloak-as-an-external-idp-with-wso2-api-manager-3-1-0-7f7a3a637526
+
+https://medium.com/wso2-learning/understanding-wso2-api-manager-3rd-party-key-manager-integration-77a3677b1e9a
