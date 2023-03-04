@@ -39,7 +39,12 @@ Configure ---> Datasources ---> Add Datasource
 cp wso2-config-volume/mysql-connector-j-8.0.32.jar wso2am-4.1.0/repository/components/lib/
 ```
 ![image](https://user-images.githubusercontent.com/86954730/222174542-3cf461ce-be36-4cc4-9cbd-278e1c6c605f.png)
-
+```yml
+docker inspect -f "{{ .Config.Env }}" wso2_am
+```
+```yml
+docker commit --change "ENV DEBUG=true" wso2_am tag/wso2image:version1
+```
 Useful links:
 
 https://medium.com/@himashaguruge/using-keycloak-as-an-external-idp-with-wso2-api-manager-3-1-0-7f7a3a637526
