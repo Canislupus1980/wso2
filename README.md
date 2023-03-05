@@ -56,7 +56,7 @@ https://<IP or Hostname>:9443/devportal
 
 https://<IP or Hostname>:9443/admin
 
-http://<IP or Hostname>:8082 connect to BD h2
+http://<IP or Hostname>:8082 ---- connect to BD h2
 ```
 
 ___Useful links:___
