@@ -11,10 +11,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: '***'
+      MYSQL_ROOT_PASSWORD: 'ueeHWugC!'
       MYSQL_DATABASE: 'WSO2AMI_DB'
       MYSQL_USER: 'wso2'
-      MYSQL_PASSWORD: '***'
+      MYSQL_PASSWORD: 'ueeHWugc!'
       TZ: Europe/Minsk
     volumes:
       - ./db/scripts:/docker-entrypoint-initdb.d
@@ -33,7 +33,14 @@ services:
 
   api-manager:
     image: wso2/wso2am
-    container_name: wso2_am    
+    container_name: wso2_am
+    environment:
+      DB_DRIVER: "com.mysql.jdbc.Driver"
+      DB_TYPE: "mysql"
+      DB_PORT: "3306"
+      DB_URL: "jdbc:mysql://wso2_mysql/WSO2AM_DB"
+      DB_USER: "root"
+      DB_PASSWORD: "ueeHWugC!"
     healthcheck:
       test: ["CMD", "curl", "-k", "-f", "https://localhost:9443/carbon/admin/login.jsp"]
       interval: 120s
@@ -51,6 +58,8 @@ services:
       #- /home/cloud-user/authenticationendpoint.war:/home/wso2carbon/wso2am-4.1.0/repository/deployment/server/webapps/authenticationendpoint.war
     ports:
       - "9443:9443"
+      - "8243:8243"
+      - "8280:8280"
 
 networks:
   wso2-net:
