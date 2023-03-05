@@ -47,16 +47,17 @@ docker commit --change "ENV DEBUG=true" wso2_am tag/wso2image:version1
 ```
 
 So that’s it. Access all the URLs of WSO2 to confirm everything is working fine.
+```
+https://<IP or Hostname>:9443/carbon
 
-https:// <IP or Hostname> :9443/carbon
+https://<IP or Hostname>:9443/publisher
 
-https:// <IP or Hostname> :9443/publisher
+https://<IP or Hostname>:9443/devportal
 
-https:// <IP or Hostname> :9443/devportal
+https://<IP or Hostname>:9443/admin
 
-https:// <IP or Hostname> :9443/admin
-
-http:// <IP or Hostname> :8082 connect to BD h2
+http://<IP or Hostname>:8082 connect to BD h2
+```
 
 ___Useful links:___
 
