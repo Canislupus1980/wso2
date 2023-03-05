@@ -50,3 +50,5 @@ Useful links:
 https://medium.com/@himashaguruge/using-keycloak-as-an-external-idp-with-wso2-api-manager-3-1-0-7f7a3a637526
 
 https://medium.com/wso2-learning/understanding-wso2-api-manager-3rd-party-key-manager-integration-77a3677b1e9a
+
+https://apim.docs.wso2.com/en/latest/administer/key-managers/configure-keycloak-connector/
