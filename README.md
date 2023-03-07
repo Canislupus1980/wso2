@@ -16,7 +16,7 @@ keytool -importkeystore -srckeystore domen.pfx -srcstoretype pkcs12 -destkeystor
 ```
 2. Ready certificates domain.jks put /home/wso2carbon/wso2am-4.1.0/repository/resources/security/
 ```bash
-cp wso2-config-volume/domen.jks wso2am-4.1.0/repository/resources/security/
+cp wso2-config-volume/*.jks wso2am-4.1.0/repository/resources/security/
 ```
 3. deployment.toml file - change the name to the desired certificate store
 ```toml
