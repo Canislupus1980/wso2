@@ -1,6 +1,6 @@
 ![wso2](https://ticxar.co/wp-content/uploads/2019/12/apimngr.png)
 # wso2
-####for WSO2 Services (AM, IS, Analytics)####
+#### for WSO2 Services (AM, IS, Analytics) ####
 
 ***Add certificates to the store***
 ```bash
